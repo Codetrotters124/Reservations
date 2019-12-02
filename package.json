@@ -1,6 +1,6 @@
 {
-  "name": "",
-  "version": "",
+  "name": "globetrotters",
+  "version": "1.0.0",
   "description": "",
   "author": "",
   "license": "",
@@ -8,10 +8,30 @@
     "node": ">=6.13.0"
   },
   "scripts": {
+    "react-dev": "webpack -d --watch",
+    "start-dev": "nodemon server/index.js",
+    "seed": "node database/seeder.js",
+    "test": "jest"
   },
   "dependencies": {
+    "express": "^4.17.1",
+    "faker": "^4.1.0",
+    "mysql2": "^2.0.1",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "sequelize": "^5.21.2"
   },
   "devDependencies": {
-    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor"
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.6",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0",
+    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
+    "jest": "^24.9.0",
+    "nodemon": "^1.19.1",
+    "webpack": "^4.39.2",
+    "webpack-cli": "^3.3.7"
   }
 }
