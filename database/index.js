@@ -1,9 +1,7 @@
 const Sequelize = require('sequelize');
 
 const sequelize = new Sequelize('reservations', 'root', '', {
-  host: 'localhost',
-  dialect: 'mysql',
-  port: 3000
+  dialect: 'mysql'
 });
 
 const Restaurant = sequelize.define('restaurant', {
@@ -15,14 +13,10 @@ const Restaurant = sequelize.define('restaurant', {
   close: Sequelize.TIME
 });
 
-const Table = sequelize.define('tabe', {
-  id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
+const Table = sequelize.define('table', {
+  uuid: {type: Sequelize.INTEGER},
   restaurantId: {
     type: Sequelize.INTEGER,
-    references: {
-      model: Restaurant,
-      key: 'id'
-    },
   },
   date: Sequelize.DATEONLY,
   time: Sequelize.TIME,
