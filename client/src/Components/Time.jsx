@@ -14,8 +14,6 @@ class Time extends React.Component {
     this.setState({
       value: event.target.value
     });
-    console.log('handle change, target value: ', event.target.value);
-    this.props.gettingPartySize(event.target.value);
   }
   render() {
     return (
