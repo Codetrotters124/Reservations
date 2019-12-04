@@ -7,11 +7,15 @@ db.sequelize.query('DROP DATABASE IF EXISTS reservations')
   .then(() => db.sequelize.sync())
   .then(() => {
     let restaurants = dummy.randomRestaurantGenerator();
-    return db.Restaurant.bulkCreate(restaurants);
+    for (let i = 0; i < restaurants.length; i++) {
+      db.Restaurant.create(restaurants[i]);
+    }
   })
   .then(() => {
     let tables = dummy.randomTableGenerator();
-    return db.Table.bulkCreate(tables);
+    for (let i = 0; i < tables.length; i++) {
+      db.Table.create(tables[i]);
+    }
   })
   .then(() => console.log('Seed data completed'))
   .catch((error) => console.log('Error creating tables', error));
