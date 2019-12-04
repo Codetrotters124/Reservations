@@ -13,7 +13,6 @@ const restaurants = [];
 const randomRestaurantGenerator = () => {
   for (let i = 0; i < 100; i++) {
     let restaurant = {
-      uuid: i + 1,
       name: restaurantName[i],
       minParty: 2,
       maxParty: max = Math.floor(Math.random() * 4) + 7,
@@ -25,13 +24,10 @@ const randomRestaurantGenerator = () => {
   return restaurants;
 };
 
-// let thisDate = momentRandom('2020-04-05', '2019-12-05').format();
-
 const bookings = [];
 const randomTableGenerator = () => {
   for (let i = 0; i < 100; i++) {
     let booking = {
-      uuid: i + 1,
       restaurantId: flooredRandomNum(101),
       date: momentRandom('2020-04-05', '2019-12-05').format().substring(0, 10),
       time: times[flooredRandomNum(22)],
@@ -42,7 +38,7 @@ const randomTableGenerator = () => {
   return bookings;
 };
 
-console.log(randomTableGenerator());
+// console.log(randomTableGenerator().length);
 
 module.exports = {
   randomRestaurantGenerator,

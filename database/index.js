@@ -14,7 +14,7 @@ const Restaurant = sequelize.define('restaurant', {
 });
 
 const Table = sequelize.define('table', {
-  uuid: {type: Sequelize.INTEGER},
+  id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
   restaurantId: {
     type: Sequelize.INTEGER,
   },
@@ -22,15 +22,6 @@ const Table = sequelize.define('table', {
   time: Sequelize.TIME,
   size: Sequelize.INTEGER
 });
-
-// sequelize
-//   .authenticate()
-//   .then(() => {
-//     console.log('connection established');
-//   })
-//   .catch(err => {
-//     console.error('Unable to connect to the database: ', err);
-//   });
 
 module.exports = {
   sequelize,
