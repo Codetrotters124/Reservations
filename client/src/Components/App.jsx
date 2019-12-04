@@ -1,6 +1,8 @@
 import React from 'react';
 import PartySize from './PartySize.jsx';
 import Time from './Time.jsx';
+import FindTable from './FindTable.jsx';
+import Date from './Date.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -16,6 +18,8 @@ class App extends React.Component {
         <h1>Make a reservation</h1>
         <PartySize gettingPartySize={this.gettingPartySize}/>
         <Time />
+        <Date />
+        <FindTable />
       </div>
     );
   }
