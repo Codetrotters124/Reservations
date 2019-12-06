@@ -5,7 +5,7 @@ const Button = styled.button`
   background: #da3743;
   border: none;
   color: white;
-  margin: 0.5em 1em;
+  margin-top: 0.5em;
   padding: .75rem 1rem;
   text-align: center;
   align-items: flex-start;
@@ -14,7 +14,7 @@ const Button = styled.button`
   border-radius: 2px;
   font-size: 1rem;
   line-height: 1.5;
-  width: 18rem;
+  width: 100%;
   box-sizing: border-box;
   -webkit-appearance: button;
   cursor: pointer;

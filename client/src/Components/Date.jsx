@@ -19,11 +19,11 @@ class Date extends React.Component {
     return (
       <div>
         <span style={{fontWeight: 'bold'}}>Date </span><br />
-        <select value={this.state.value} onChange={this.handleChange}>
+        <this.props.Select value={this.state.value} onChange={this.handleChange}>
           {dates.map((date) =>
             <option>{date}</option>
           )}
-        </select>
+        </this.props.Select>
       </div>
     );
   }
