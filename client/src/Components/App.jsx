@@ -20,7 +20,6 @@ const H1 = styled.h3`
 `;
 const Select = styled.select`
   cursor: pointer;
-  font-family: inherit;
   background-color: #fff;
   font-size: .875rem;
   display: block;
@@ -45,11 +44,9 @@ const Select = styled.select`
   background-image:
     linear-gradient(45deg, transparent 50%, gray 50%),
     linear-gradient(135deg, gray 50%, transparent 50%);
-    // linear-gradient(to right, #ccc, #ccc);
   background-position:
     calc(100% - 20px) calc(1em + 2px),
     calc(100% - 15px) calc(1em + 2px);
-    // calc(100% - 2.5em) 0.5em;
   background-size:
     5px 5px,
     5px 5px,
