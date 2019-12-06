@@ -16,7 +16,6 @@ const Div = styled.div`
 const H1 = styled.h3`
   font-family: Oswald;
   font-size: 21px;
-  // text-decoration-line: underline;
   border-bottom: 1px solid #d8d9db; 
 `;
 
