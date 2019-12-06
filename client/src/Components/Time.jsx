@@ -19,11 +19,11 @@ class Time extends React.Component {
     return (
       <div>
         <span style={{fontWeight: 'bold'}}>Time </span><br />
-        <select value={this.state.value} onChange={this.handleChange}>
+        <this.props.Select value={this.state.value} onChange={this.handleChange}>
           {times.map((item) =>
             <option>{item}</option>
           )}
-        </select>
+        </this.props.Select>
       </div>
     );
   }
