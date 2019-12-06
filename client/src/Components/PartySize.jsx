@@ -1,4 +1,12 @@
 import React from 'react';
+import styled from 'styled-components';
+
+const Span = styled.span`
+  font-size: .875rem;
+  font-weight: 500;
+  padding-bottom: .25rem; 
+`;
+
 
 class PartySize extends React.Component {
   constructor(props) {
@@ -22,12 +30,12 @@ class PartySize extends React.Component {
     }
     return (
       <div>
-        <span style={{fontWeight: 'bold'}}>Party Size </span><br />
-        <select value={this.state.value} onChange={this.handleChange}>
+        <Span style={{fontWeight: 'bold'}}>Party Size </Span><br />
+        <this.props.Select value={this.state.value} onChange={this.handleChange}>
           {partySize.map((item) =>
             <option>{item}</option>
           )}
-        </select>
+        </this.props.Select>
       </div>
     );
   }
