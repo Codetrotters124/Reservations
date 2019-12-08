@@ -4,6 +4,7 @@ import Time from './Time.jsx';
 import FindTable from './FindTable.jsx';
 import Date from './Date.jsx';
 import styled from 'styled-components';
+import Calendar from './Calendar.jsx';
 
 const Div = styled.div`
   width: 300px;
@@ -70,6 +71,7 @@ class App extends React.Component {
         <Time Select={Select} />
         <Date Select={Select}/>
         <FindTable />
+        <Calendar />
       </Div>
     );
   }
