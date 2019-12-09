@@ -4,7 +4,6 @@ import Time from './Time.jsx';
 import FindTable from './FindTable.jsx';
 import Date from './Date.jsx';
 import styled from 'styled-components';
-import Calendar from './Calendar.jsx';
 
 const Div = styled.div`
   width: 300px;
@@ -58,20 +57,27 @@ const Select = styled.select`
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.gettingPartySize = this.gettingPartySize.bind(this);
+    this.state = {
+      time: ''
+    };
+    this.gettingTime = this.gettingTime.bind(this);
+    // this.giveButtontime = this.giveButtontime.bind(this);
   }
-  gettingPartySize(size) {
-    console.log('Hi Im from App', size);
+  gettingTime(times) {
+    this.setState({
+      time: times
+    }, () => { console.log('new state: ', this.state.time); });
+    console.log('from app, the value being passed in: ', times);
   }
+
   render() {
     return (
       <Div>
         <H1>Make a reservation</H1>
-        <PartySize Select={Select} gettingPartySize={this.gettingPartySize}/>
-        <Time Select={Select} />
+        <PartySize Select={Select} />
+        <Time Select={Select} gettingTime={this.gettingTime} />
         <Date Select={Select}/>
-        <FindTable />
-        <Calendar />
+        <FindTable time={this.state.time} />
       </Div>
     );
   }
