@@ -14,14 +14,16 @@ class Time extends React.Component {
     this.setState({
       value: event.target.value
     });
+    console.log('Im from Time: ', event.target.value);
+    this.props.gettingTime(event.target.value);
   }
   render() {
     return (
       <div>
         <span style={{fontWeight: 'bold'}}>Time </span><br />
         <this.props.Select value={this.state.value} onChange={this.handleChange}>
-          {times.map((item) =>
-            <option>{item}</option>
+          {times.map((item, i) =>
+            <option key={i * 8}>{item}</option>
           )}
         </this.props.Select>
       </div>

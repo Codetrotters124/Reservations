@@ -1,6 +1,6 @@
 import React from 'react';
 import moment from 'moment';
-import { thisExpression } from '@babel/types';
+import { thisExpression, isBlock } from '@babel/types';
 
 const weekdaysShort = moment.weekdaysShort();
 const weekdays = moment.weekdays();
@@ -15,6 +15,9 @@ class Calendar extends React.Component {
       showMonthPopup: false,
       showYearPopup: false
     };
+    this.monthNav = this.monthNav.bind(this);
+    this.SelectList = this.SelectList.bind(this);
+    this.yearNav = this.yearNav.bind(this);
   }
   year() {
     return this.state.dateObject.format('Y');
@@ -35,25 +38,123 @@ class Calendar extends React.Component {
     let dateObject = this.state.dateObject;
     let firstDay = moment(dateObject).startOf('month').format('d');
     return firstDay;
+  } 
+  setMonth(month) {
+    let monthNum = months.indexOf(month);
+    let dateContext = Object.assign({}, this.state.dateObject);
+    dateContext = moment(dateContext).set('month', monthNum);
+    this.setState({
+      dateObject: dateContext
+    });
   }
-  render() {    
+  onSelectChange(e, data) {
+    this.setMonth(data);
+    this.props.onChangeMonth() && this.props.onChangeMonth();
+  }
+  SelectList(props) {
+    let popup = props.data.map((data) => {
+      return (
+        <div key={data}>
+          <a href="#" onClick={(e) => { this.onSelectChange(e, data); }}>
+            {data}
+          </a>
+        </div>
+      );
+    });
+    return (
+      <div>
+        {popup}
+      </div>
+    );
+  }
+  showYearEditor() {
+    this.setState({
+      showYearPopup: true
+    });
+  }
+  setYear(year) {
+    let dateContext = Object.assign({}, this.state.dateObject);
+    dateContext = moment(dateContext).set('year', year);
+    this.setState({
+      dateObject: dateContext
+    });
+  }
+  onYearChange(e) {
+    this.setYear(e.target.value);
+    this.props.onYearChange && this.props.onYearChange(e, e.target.value);
+  }
+  yearNav() {
+    return (
+      this.state.showYearPopup ?
+        <input
+          defaultValue = {this.year()}
+          ref={(yearInput) => { this.yearInput = yearInput; }}
+          onKeyUp= {(e) => this.onKeyUpYear(e)}
+          onChange = {(e) => this.onYearChange(e)}
+          type='number'
+          placeholder="year"
+        />
+        :
+        <span onDoubleClick={(e) => { this.showYearEditor(); }}>
+          {this.year()}
+        </span>
+    );
+  }
+  onChangeMonth(e, month) {
+    let monthPopup = this.state.showMonthPopup;
+    this.setState({
+      showMonthPopup: !monthPopup
+    });
+  }
+  monthNav() {
+    return (
+      <span
+        onClick={(e) => { this.onChangeMonth(e, this.month()); }}>
+        {this.month()}
+        {this.state.showMonthPopup && <this.SelectList data={months} />}        
+      </span>
+    );
+  }
+  nextMonth() {
+    let dateContext = Object.assign({}, this.state.dateObject);
+    dateContext = moment(dateObject).add(1, 'month');
+    this.setState({
+      dateObject: dateContext
+    });
+    this.props.onNextMonth && this.props.onNextMonth();
+  }
+  previousMonth() {
+    let dateContext = Object.assign({}, this.state.dateObject);
+    dateContext = moment(dateObject).subtract(1, 'month');
+    this.setState({
+      dateObject: dateContext
+    });
+    this.props.onPreviousMonth && this.props.onPreviousMonth();
+  }
+  onDayClick(e, day) {
+    this.props.onDayClick && this.props.onDayClick(e, day);
+    console.log(day);
+  }
+  render() {  
     let weekdays = weekdaysShort.map((day) => {
       return (
-        <td key={day} className="week-day">{day}</td>
+        <td key={day}>{day}
+          <span onClick={(e) => { this.onDayClick(e, day); }}></span>
+        </td>
       );
     });
     let blanks = [];
     for (let i = 0; i < this.firstDayOfMonth(); i++) {
       blanks.push(
-        <td key={i * 80} className='calendar-day empty'>{''}</td>
+        <td key={i * 80}>{''}</td>
       );
     }
     let daysInMonth = [];
     for (let d = 1; d <= this.daysInMonth(); d++) {
       let className = (d === this.currentDay() ? 'day current-day' : 'day');
       daysInMonth.push(
-        <td key={d} className={className}>
-          <span>{d}</span>
+        <td key={d}>
+          <span onClick={(e)=> { this.onDayClick(e, d); }}>{d}</span>
         </td>
       );
     }
@@ -82,15 +183,12 @@ class Calendar extends React.Component {
         </tr>
       );
     });
-    console.log('blanks: ', blanks);
     return (
       <div>
-        <h2>Calendar</h2>
+        <span>
+          <this.monthNav /> <this.yearNav /> 
+        </span>
         <table>
-          <thead>
-            <tr>
-            </tr>
-          </thead>
           <tbody>
             <tr>
               {weekdays}
@@ -104,10 +202,3 @@ class Calendar extends React.Component {
 }
 
 export default Calendar;
-
-
-// {weekdaysShort.map((day) => 
-//   <th key={day} className='weekday'>
-//     {day}
-//   </th>
-// )}

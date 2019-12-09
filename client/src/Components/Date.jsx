@@ -1,29 +1,45 @@
 import React from 'react';
-
-const dates = ['today', 'tomorrow', 'day after', 'next week', 'next month'];
+import Calendar from './Calendar.jsx';
 
 class Date extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: '2'
+      value: '2',
+      view: 'option'
     };
     this.handleChange = this.handleChange.bind(this);
+    this.changeView = this.changeView.bind(this);
   }
   handleChange(event) {
     this.setState({
       value: event.target.value
     });
   }
+  changeView(option) {
+    console.log(option);
+    this.setState({
+      view: option
+    });
+  }
+  renderView() {
+    const {view} = this.state;
+    if (view === 'option') {
+      return;
+    } else if (view === 'calendar') {
+      return <Calendar />;
+    }
+  }
   render() {
     return (
       <div>
         <span style={{fontWeight: 'bold'}}>Date </span><br />
-        <this.props.Select value={this.state.value} onChange={this.handleChange}>
-          {dates.map((date) =>
-            <option>{date}</option>
-          )}
+        <this.props.Select onClick={() => this.changeView('calendar')}>
+          <option></option>
         </this.props.Select>
+        <div>
+          {this.renderView()}
+        </div>
       </div>
     );
   }

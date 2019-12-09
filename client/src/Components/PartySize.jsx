@@ -21,7 +21,7 @@ class PartySize extends React.Component {
       value: event.target.value
     });
     console.log('handle change, target value: ', event.target.value);
-    this.props.gettingPartySize(event.target.value);
+    // this.props.gettingPartySize(event.target.value);
   }
   render() {
     let partySize = [];
@@ -32,8 +32,8 @@ class PartySize extends React.Component {
       <div>
         <Span style={{fontWeight: 'bold'}}>Party Size </Span><br />
         <this.props.Select value={this.state.value} onChange={this.handleChange}>
-          {partySize.map((item) =>
-            <option>{item}</option>
+          {partySize.map((item, i) =>
+            <option key={i * 8}>{item}</option>
           )}
         </this.props.Select>
       </div>
