@@ -1,18 +1,21 @@
 const express = require('express');
 // const db = require('../database/index.js');
-
+const controller = require('./controller');
+const path = require('path');
 //middleware
 const bodyParser = require('body-parser');
-
-//Router
-const router = require('./routes.js');
 
 let app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
-app.use(express.static('client/dist'));
-app.use(router);
+// app.use(express.static('client/dist'));
+// app.use('/:id', express.static(path.join(__dirname, 'client/dist')));
+
+//neils shit
+app.use('/', express.static(path.join(__dirname, '../client/dist')));
+
+app.get('/:id', controller.bookings.get);
 
 let port = 3001;
 

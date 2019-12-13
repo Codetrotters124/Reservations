@@ -16,7 +16,7 @@ const Div = styled.div`
 const H1 = styled.h3`
   font-family: Oswald;
   font-size: 21px;
-  border-bottom: 1px solid #d8d9db; 
+  border-bottom: 1px solid #d8d9db;
 `;
 const Select = styled.select`
   cursor: pointer;
@@ -58,10 +58,16 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      time: ''
+      time: '',
+      reservation: '',
+      partySize: 0,
+      date: ''
     };
     this.gettingTime = this.gettingTime.bind(this);
-    // this.giveButtontime = this.giveButtontime.bind(this);
+    this.gettingSize = this.gettingSize.bind(this);
+  }
+  componentDidMount() {
+    this.getReservation();
   }
   gettingTime(times) {
     this.setState({
@@ -69,12 +75,31 @@ class App extends React.Component {
     }, () => { console.log('new state: ', this.state.time); });
     console.log('from app, the value being passed in: ', times);
   }
+  getReservation() {
+    let url = window.location.href.split('/');
+    let id = url[length - 2];
+    fetch(`http://localhost:3001/${id}`)
+      .then(res => res.json())
+      .then(
+        (result) => {
+          console.log(result);
+        },
+        (error) => { console.log('error'); }
+      );
+  }
+  gettingSize(size) {
+    this.setState({
+      partySize: size
+    }, () => {
+      console.log(this.state.partySize);
+    });
+  }
 
   render() {
     return (
       <Div>
         <H1>Make a reservation</H1>
-        <PartySize Select={Select} />
+        <PartySize Select={Select} gettingSize={this.gettingSize} />
         <Time Select={Select} gettingTime={this.gettingTime} />
         <Date Select={Select}/>
         <FindTable time={this.state.time} />

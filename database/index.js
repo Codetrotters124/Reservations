@@ -1,7 +1,8 @@
 const Sequelize = require('sequelize');
 
 const sequelize = new Sequelize('reservations', 'root', '', {
-  dialect: 'mysql'
+  dialect: 'mysql',
+  host: 'reservations'
 });
 
 const Restaurant = sequelize.define('restaurant', {
@@ -22,6 +23,7 @@ const Table = sequelize.define('table', {
   time: Sequelize.TIME,
   size: Sequelize.INTEGER
 });
+
 
 module.exports = {
   sequelize,

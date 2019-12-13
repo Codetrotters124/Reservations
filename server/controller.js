@@ -2,7 +2,8 @@ const model = require('./model');
 
 const bookings = {
   get: (req, res) => {
-    model.bookings.get((err, data) => {
+    // console.log(req.params.id);
+    model.bookings.get(req.params.id, (err, data) => {
       if (err) {
         res.status(400).send('sorry');
       } else {

@@ -3,12 +3,10 @@ import styled from 'styled-components';
 // import {GoChevronDown} from 'react-icons/go';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-
-
 const Span = styled.span`
   font-size: .875rem;
   font-weight: 500;
-  padding-bottom: .25rem; 
+  padding-bottom: .25rem;
 `;
 
 
@@ -25,7 +23,7 @@ class PartySize extends React.Component {
       value: event.target.value
     });
     console.log('handle change, target value: ', event.target.value);
-    // this.props.gettingPartySize(event.target.value);
+    this.props.gettingSize(event.target.value);
   }
   render() {
     let partySize = [];
@@ -35,13 +33,13 @@ class PartySize extends React.Component {
     return (
       <div>
         <Span style={{fontWeight: 'bold'}}>Party Size </Span><br />
-        <this.props.Select value={this.state.value} onChange={this.handleChange}> 
-          
+        <this.props.Select value={this.state.value} onChange={this.handleChange}>
+
           {partySize.map((item, i) =>
             <option key={i * 8}>{item } </option>
           )}
         </this.props.Select>
-        
+
       </div>
     );
   }
