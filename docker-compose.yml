@@ -17,3 +17,4 @@ services:
     ports:
       - '3001:3001'
     command: bash -c "./wait-for-it.sh database:3306 && npm run seed && npm run start"
+

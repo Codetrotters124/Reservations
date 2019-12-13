@@ -9,7 +9,7 @@ const Div = styled.div`
   width: 300px;
   border: 1px solid white;
   box-shadow: 0 5px 10px rgba(0,0,0,0.3);
-  padding: 50px;
+  padding: 20px;
   margin: 20px;
 `;
 
@@ -17,6 +17,7 @@ const H1 = styled.h3`
   font-family: Oswald;
   font-size: 21px;
   border-bottom: 1px solid #d8d9db;
+  padding-bottom: 4px
 `;
 const Select = styled.select`
   cursor: pointer;
@@ -82,7 +83,9 @@ class App extends React.Component {
       .then(res => res.json())
       .then(
         (result) => {
-          console.log(result);
+          this.setState({
+            reservation: result
+          });
         },
         (error) => { console.log('error'); }
       );

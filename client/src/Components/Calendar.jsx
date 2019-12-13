@@ -13,7 +13,7 @@ const Div = styled.div`
   margin: 0px 1px;
   padding: 16px 0;
   border: 1px solid #d8d9db;
-  font-family: BrandonText
+  font-family: BrandonText;
 `;
 const Tbody = styled.tbody`
   border: 1px solid #d8d9db;
