@@ -1,13 +1,13 @@
 import React from 'react';
 import moment from 'moment';
-import styled from 'styled-components';
+// import styled from 'styled-components';
 const weekdaysShort = moment.weekdaysShort();
 const weekdays = moment.weekdays();
 const months = moment.months();
 import { GoChevronLeft, GoChevronRight } from 'react-icons/go';
 
 
-const Div = styled.div`
+const Div = window.styled.div`
   background-color: #f1f2f4;
   width: 100%;
   margin: 0px 1px;
@@ -15,7 +15,7 @@ const Div = styled.div`
   border: 1px solid #d8d9db;
   font-family: BrandonText;
 `;
-const Tbody = styled.tbody`
+const Tbody = window.styled.tbody`
   border: 1px solid #d8d9db;
   display: table;
   width: 100%;
@@ -25,48 +25,40 @@ const Tbody = styled.tbody`
   font-weight: 500;
   background-clip: padding-box
 `;
-const Leftbutton = styled.div`
+const Leftbutton = window.styled.div`
   float: left;
   margin-left: 20px;
   border: 1px solid #d8d9db;
   border-radius: 50px;
-  // &:hover {
-  //   border: red 2px solid;
-  //   cursor: pointer
-  // }
 `;
-const Rightbutton = styled.div`
+const Rightbutton = window.styled.div`
   float: right;
   margin-right: 20px;
   border: 1px solid #d8d9db;
   border-radius: 50px;
-  // &:hover {
-  //   border: red solid;
-  //   cursor: pointer
-  // }
 `;
-const Span = styled.span`
+const Span = window.styled.span`
   display: block;
   text-align: center;
 `;
-const Table = styled.table`
+const Table = window.styled.table`
   width: 86%;
   margin: 0 auto;
 
 `;
-const Tr = styled.tr`
+const Tr = window.styled.tr`
   display: table-row;
   border: 1px solid #d8d9db;
   background-color: #fff;
 `;
-const Td = styled.td`
+const Td = window.styled.td`
 &:hover {
   border: red 2px solid;
   cursor: pointer
 }
 `;
 
-const Day = styled.tr`
+const Day = window.styled.tr`
   width: 100%;
   display: table-header-group
 `;

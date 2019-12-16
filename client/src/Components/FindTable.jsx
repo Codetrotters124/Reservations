@@ -1,8 +1,8 @@
 import React from 'react';
-import styled from 'styled-components';
+// import styled from 'styled-components';
 
 const times = ['5:00 PM', '5:30 PM', '6:00 PM', '6:30 PM', '7:00 PM', '7:30 PM', '8:00 PM', '8:30 PM', '9:00 PM', '9:30 PM', '10:00 PM'];
-const Button = styled.button`
+const Button = window.styled.button`
   background: #da3743;
   border: none;
   color: white;
@@ -11,7 +11,6 @@ const Button = styled.button`
   text-align: center;
   align-items: flex-start;
   font-weight: 500;
-  display: inline-block;
   border-radius: 2px;
   font-size: 1rem;
   line-height: 1.5;
@@ -24,10 +23,11 @@ const Button = styled.button`
     opacity: 0.7;
   }
 `;
-const SmallButton = styled(Button)`
+const SmallButton = window.styled(Button)`
   background-color: #da3743;
   cursor: pointer;
   border-radius: 2px;
+  display: inline-block;
   text-align: center;
   color: #fff;
   display: flex;
@@ -38,6 +38,7 @@ const SmallButton = styled(Button)`
   width: 72px;
   height: 32px;
   font-size: .875rem;
+  margin-left: 10px;
 `;
 
 class FindTable extends React.Component {
@@ -68,7 +69,7 @@ class FindTable extends React.Component {
   render() {
     return (
       <div>
-        
+
         {this.state.clicked ? <AvailableTime times={this.arrayValue()}/> : <Button onClick={this.handleSubmit}>Find Table</Button>}
       </div>
     );

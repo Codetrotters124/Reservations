@@ -1,9 +1,9 @@
 import React from 'react';
-import styled from 'styled-components';
+// import styled from 'styled-components';
 // import {GoChevronDown} from 'react-icons/go';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const Span = styled.span`
+const Span = window.styled.span`
   font-size: .875rem;
   font-weight: 500;
   padding-bottom: .25rem;
