@@ -1,22 +1,12 @@
 # Project Name
 
-> Project description
+> Full stack Reservation and calendar module for Restaurant reservation app.
 
 ## Related Projects
 
   - https://github.com/Codetrotters124/PhotoGallery
   - https://github.com/Codetrotters124/Menu
   - https://github.com/Codetrotters124/Reviews
-
-## Table of Contents
-
-1. [Usage](#Usage)
-1. [Requirements](#requirements)
-1. [Development](#development)
-
-## Usage
-
-> Some usage instructions
 
 ## Requirements
 
@@ -34,5 +24,14 @@ From within the root directory:
 ```sh
 npm install -g webpack
 npm install
+```
+
+### Set up Work Environment
+
+```sh
+npm run build
+npm start
+npm run seed
+npm run test
 ```
 
